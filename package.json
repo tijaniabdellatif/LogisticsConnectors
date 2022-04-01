@@ -1,0 +1,22 @@
+{
+  "name": "devconnectors",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tijaniabdellatif/LogisticsConnectors.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tijaniabdellatif/LogisticsConnectors/issues"
+  },
+  "homepage": "https://github.com/tijaniabdellatif/LogisticsConnectors#readme",
+  "dependencies": {
+    "express": "^4.17.3"
+  }
+}
