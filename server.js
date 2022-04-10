@@ -8,8 +8,11 @@ const __PORT__ = process.env.PORT || 5000;
 /**
  * Connecting DB
  */
-
 connectDB();
+/**
+ * Init middleware
+ */
+app.use(express.json({extended:false}));
 app.get('/',(req,res) => {
 
        res.send(`API Runing welcome ${process.env.APP_NAME}`);
