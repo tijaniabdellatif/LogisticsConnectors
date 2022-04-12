@@ -56,11 +56,10 @@ router.post('/',[
        await user.save();
 
        //Rturn JSWON WEB TOKEN
-       
+
        res.send('User registred');
 
           }catch(error){
-                
                 console.error(error.message);
                 res.status(500).send({
                       status:500,
@@ -69,6 +68,4 @@ router.post('/',[
           }
           
 })
-
-
 module.exports = router;
