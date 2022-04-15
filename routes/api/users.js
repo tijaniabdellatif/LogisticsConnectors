@@ -1,16 +1,18 @@
 const express = require('express');
+require('dotenv').config()
 const router = express.Router();
 const {body,validationResult } = require('express-validator');
 const User = require('../../models/User');
 const gravatar = require('gravatar');
 const bycrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
+
+
 /**
  * @route  post api/users
  * @desc   Test route
  * @access Public
  */
-
-
 router.post('/',[
      body('name','Name is required').not().isEmpty(),
      body('email','Please include a valid email').isEmail(),
@@ -55,11 +57,23 @@ router.post('/',[
        user.password = await bycrypt.hash(password,salt);
        await user.save();
 
-       //Rturn JSWON WEB TOKEN
+        const payload = {
+              user:{
+                   id:user.id,
+              }
+        }
 
-       res.send('User registred');
+          jwt.sign(payload,process.env.JWT_SECRET,{
+               expiresIn:3600000
+          },(err,token) => {
 
-          }catch(error){
+                  if(err) throw err;
+                  res.json({ token });
+                  
+          })
+
+          }
+          catch(error){
                 console.error(error.message);
                 res.status(500).send({
                       status:500,
